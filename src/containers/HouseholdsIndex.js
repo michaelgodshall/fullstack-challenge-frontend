@@ -1,19 +1,22 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router';
 import _ from 'lodash';
 import { fetchHouseholds } from '../actions/householdsActions';
 
 class HouseholdsIndex extends React.Component {
   componentWillMount() {
+    // Fetch a list of households
     this.props.fetchHouseholds();
   }
 
   renderHouseholds() {
-    const households = _.values(this.props.households);
-    return households.map((household) => {
+    return this.props.households.map((household) => {
       return (
         <li className="list-group-item" key={household.id}>
-          <strong>{household.address}</strong>
+          <Link to={`households/${household.id}`}>
+            <strong>{household.address}</strong>
+          </Link>
         </li>
       );
     });
@@ -32,7 +35,8 @@ class HouseholdsIndex extends React.Component {
 }
 
 function mapStateToProps(state) {
-  return { households: state.households }
+  // Transform households to an array
+  return { households: _.values(state.households.all) }
 }
 
 export default connect(mapStateToProps, { fetchHouseholds })(HouseholdsIndex);

@@ -2,6 +2,7 @@ import axios from 'axios';
 import * as types from '../constants/actionTypes';
 import { HOUSEHOLD_ENDPOINT } from '../constants/apiEndpoints';
 
+// Fetch a list of households
 export function fetchHouseholds() {
   const request = axios.get(HOUSEHOLD_ENDPOINT);
 
@@ -14,4 +15,18 @@ export function fetchHouseholds() {
       });
     });
   };
+}
+
+// Fetch a single household by id
+export function fetchHousehold(id) {
+  const request = axios.get(`${HOUSEHOLD_ENDPOINT}/${id}`);
+
+  return (dispatch) => {
+    request.then(({data}) => {
+      dispatch({
+        type: types.FETCH_HOUSEHOLD,
+        payload: data
+      });
+    });
+  }
 }
