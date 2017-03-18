@@ -1,0 +1,6 @@
+// Household action types
+export const FETCH_HOUSEHOLDS = 'FETCH_HOUSEHOLDS';
+export const FETCH_HOUSEHOLD = 'FETCH_HOUSEHOLD';
+export const CREATE_HOUSEHOLD = 'CREATE_HOUSEHOLD';
+export const UPDATE_HOUSEHOLD = 'UPDATE_HOUSEHOLD';
+export const DELETE_HOUSEHOLD = 'DELETE_HOUSEHOLD';
