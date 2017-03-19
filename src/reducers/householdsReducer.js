@@ -21,7 +21,6 @@ export default function(state = INITIAL_STATE, action) {
       };
     case types.CREATE_HOUSEHOLD:
       // Add a new household to the list
-      console.log(action);
       return {
         ...state,
         all: { ...state.all, [action.household.id]: action.household }
