@@ -34,7 +34,7 @@ export function fetchHousehold(id) {
 
 // Create a new household
 export function createHousehold(props, successRedirect = '/') {
-  const request = axios.post(`${HOUSEHOLDS_ENDPOINT}`, props);
+  const request = axios.post(HOUSEHOLDS_ENDPOINT, props);
 
   return (dispatch) => {
     request.then(({data}) => {
