@@ -6,34 +6,7 @@ import { reduxForm, Field } from 'redux-form';
 import _ from 'lodash';
 import { createHousehold } from '../actions/householdsActions';
 import FormField from '../components/FormField';
-
-const FIELDS = {
-  address: {
-    element: 'input',
-    label: 'Address',
-    type: 'text'
-  },
-  city: {
-    element: 'input',
-    label: 'City',
-    type: 'text'
-  },
-  state: {
-    element: 'input',
-    label: 'State',
-    type: 'text'
-  },
-  zip: {
-    element: 'input',
-    label: 'Zipcode',
-    type: 'text'
-  },
-  number_of_bedrooms: {
-    element: 'input',
-    label: 'Number of bedrooms',
-    type: 'text'
-  }
-};
+import FIELDS from '../constants/householdFields';
 
 class HouseholdsNew extends React.Component {
   onSubmit(props) {
