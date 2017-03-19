@@ -1,7 +1,7 @@
 import _ from 'lodash';
 import * as types from '../constants/actionTypes';
 
-const INITIAL_STATE = { all: {}, showId: null};
+const INITIAL_STATE = { all: {}, currentId: null};
 
 export default function(state = INITIAL_STATE, action) {
   switch(action.type) {
@@ -17,7 +17,7 @@ export default function(state = INITIAL_STATE, action) {
       return {
         ...state,
         all: { ...state.all, [action.household.id]: action.household },
-        showId: action.household.id
+        currentId: action.household.id
       };
     case types.CREATE_HOUSEHOLD:
       // Add a new household to the list

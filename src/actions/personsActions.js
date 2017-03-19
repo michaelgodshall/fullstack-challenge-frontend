@@ -12,9 +12,28 @@ export function fetchPersons(householdId) {
     request.then(({data}) => {
       dispatch({
         type: types.FETCH_PERSONS,
-        payload: data,
+        persons: data,
         householdId
       });
+    });
+  };
+}
+
+// Create a new person
+export function createPerson(householdId, props, successRedirect = '/') {
+  // Set the household for which the person will be created
+  let params = {...props, household: householdId};
+  const request = axios.post(PERSONS_ENDPOINT, params);
+
+  return (dispatch) => {
+    request.then(({data}) => {
+      dispatch({
+        type: types.CREATE_PERSON,
+        person: data,
+        householdId
+      });
+      // Redirect after create success
+      browserHistory.push(successRedirect);
     });
   };
 }

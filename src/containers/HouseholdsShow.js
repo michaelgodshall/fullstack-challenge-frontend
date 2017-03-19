@@ -50,7 +50,13 @@ class HouseholdsShow extends React.Component {
         </div>
 
         <div>
-          <h3>People</h3>
+          <div className="btn-toolbar justify-content-between mb-2" role="toolbar">
+            <h3>People</h3>
+            <div className="button-group" role="group">
+              <Link to={`/households/${household.id}/persons/new`}
+                    className="btn btn-primary">Add Person</Link>
+            </div>
+          </div>
           <ul className="list-group">
             {this.renderPersons()}
           </ul>
@@ -68,7 +74,7 @@ class HouseholdsShow extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    household: state.households.all[state.households.showId],
+    household: state.households.all[state.households.currentId],
     // Filter persons by the current household
     persons: _.filter(_.values(state.persons.all), {'household': state.persons.filter.householdId})
   };
