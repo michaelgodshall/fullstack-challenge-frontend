@@ -14,9 +14,9 @@ class App extends React.Component {
 
             <div className="collapse navbar-collapse">
               <ul className="navbar-nav mr-auto">
-                {/*<li className="nav-item active">*/}
-                  {/*<a className="nav-link" href="#">Households</a>*/}
-                {/*</li>*/}
+                <li className="nav-item">
+                  <Link to="/" className="nav-link">Households</Link>
+                </li>
               </ul>
               <Link to="/households/new" className="btn btn-outline-success">New Household</Link>
             </div>
