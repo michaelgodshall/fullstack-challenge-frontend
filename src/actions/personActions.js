@@ -5,7 +5,7 @@ import { PERSONS_ENDPOINT } from '../constants/apiEndpoints';
 
 // Fetch a list of persons by household id
 export function fetchPersons(householdId) {
-  let params = {household: householdId};
+  let params = {params: {household: householdId}};
   const request = axios.get(PERSONS_ENDPOINT, params);
 
   return (dispatch) => {
