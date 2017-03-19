@@ -21,9 +21,12 @@ const PERSON_FIELDS = {
     type: 'number'
   },
   gender: {
-    element: 'input',  // TODO Figure out select input for gender
+    element: 'select',
     label: 'Gender',
-    type: 'text'
+    options: [
+      {value: 'f', name: 'Female'},
+      {value: 'm', name: 'Male'}
+    ]
   }
 };
 

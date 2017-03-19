@@ -33,8 +33,8 @@ class PersonNew extends React.Component {
     // Generate field elements
     const fieldElements = _.map(FIELDS, (field, fieldName) => {
       return (
-        <Field key={fieldName} name={fieldName} label={field.label}
-               component={FormField} type={field.type} element={field.element} />
+        <Field key={fieldName} name={fieldName} label={field.label} component={FormField}
+               type={field.type} element={field.element} options={field.options} />
       );
     });
 
