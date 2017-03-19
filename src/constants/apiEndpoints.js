@@ -5,6 +5,7 @@ export const API_URL = 'https://fullstack-challenge-backend.herokuapp.com/api/';
 export const AUTH_TOKEN = '75170349a6970b64fe1f511210e0adc6dfa162df';
 export const HOUSEHOLDS_ENDPOINT = 'households';
 export const PERSONS_ENDPOINT = 'persons';
+export const VEHICLES_ENDPOINT = 'vehicles';
 
 // Set the default axios url
 axios.defaults.baseURL = API_URL;

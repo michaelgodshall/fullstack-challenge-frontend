@@ -4,14 +4,18 @@ import { Link } from 'react-router';
 import _ from 'lodash';
 import { fetchHousehold, deleteHousehold } from '../actions/householdActions';
 import { fetchPersons } from '../actions/personActions';
+import { fetchVehicles } from '../actions/vehicleActions';
 import HouseholdHeader from '../components/HouseholdHeader';
 
 class HouseholdsShow extends React.Component {
   componentWillMount() {
+    const householdId = this.props.params.id;
     // Fetch a household with the given id
-    this.props.fetchHousehold(this.props.params.id);
+    this.props.fetchHousehold(householdId);
     // Fetch persons for the current household
-    this.props.fetchPersons(this.props.params.id);
+    this.props.fetchPersons(householdId);
+    // Fetch vehicles for the current household
+    this.props.fetchVehicles(householdId);
   }
 
   onDeleteClick() {
@@ -35,6 +39,22 @@ class HouseholdsShow extends React.Component {
     });
   }
 
+  renderVehicles() {
+    const { vehicles } = this.props;
+
+    if (!vehicles.length) {
+      return <div>None</div>
+    }
+
+    return vehicles.map((vehicle) => {
+      return (
+        <li className="list-group-item" key={vehicle.id}>
+          {vehicle.year} {vehicle.make} {vehicle.model}
+        </li>
+      )
+    })
+  }
+
   render() {
     const { household } = this.props;
 
@@ -47,7 +67,7 @@ class HouseholdsShow extends React.Component {
       <div>
         <HouseholdHeader household={household}/>
 
-        <div>
+        <div className="mb-5">
           <div className="btn-toolbar justify-content-between mb-2" role="toolbar">
             <h3>People</h3>
             <div className="button-group" role="group">
@@ -57,6 +77,19 @@ class HouseholdsShow extends React.Component {
           </div>
           <ul className="list-group">
             {this.renderPersons()}
+          </ul>
+        </div>
+
+        <div>
+          <div className="btn-toolbar justify-content-between mb-2" role="toolbar">
+            <h3>Vehicles</h3>
+            <div className="button-group" role="group">
+              <Link to={`/households/${household.id}/vehicles/new`}
+                    className="btn btn-primary">Add Vehicle</Link>
+            </div>
+          </div>
+          <ul className="list-group">
+            {this.renderVehicles()}
           </ul>
         </div>
 
@@ -74,8 +107,13 @@ function mapStateToProps(state) {
   return {
     household: state.households.all[state.households.currentId],
     // Filter persons by the current household
-    persons: _.filter(_.values(state.persons.all), {'household': state.persons.filter.householdId})
+    persons: _.filter(_.values(state.persons.all), {'household': state.persons.filter.householdId}),
+    // Filter vehicles by current household
+    vehicles: _.filter(_.values(state.vehicles.all), {'household': state.vehicles.filter.householdId})
   };
 }
 
-export default connect(mapStateToProps, { fetchHousehold, deleteHousehold, fetchPersons })(HouseholdsShow);
+export default connect(
+  mapStateToProps,
+  { fetchHousehold, deleteHousehold, fetchPersons, fetchVehicles })
+(HouseholdsShow);
