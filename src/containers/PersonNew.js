@@ -11,7 +11,7 @@ import HouseholdHeader from '../components/HouseholdHeader';
 import FIELDS from '../constants/personFields';
 
 class PersonNew extends React.Component {
-  componentWillMount(props) {
+  componentWillMount() {
     // Fetch a household with the given id
     const householdId = this.props.params.id;
     this.props.fetchHousehold(householdId);
