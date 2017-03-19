@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { browserHistory } from 'react-router'
 import * as types from '../constants/actionTypes';
 import { HOUSEHOLD_ENDPOINT } from '../constants/apiEndpoints';
 
@@ -41,6 +42,22 @@ export function createHousehold(props) {
         type: types.CREATE_HOUSEHOLD,
         payload: data
       });
+    });
+  }
+}
+
+// Delete a household by id
+export function deleteHousehold(id, successRedirect = '/') {
+  const request = axios.delete(`${HOUSEHOLD_ENDPOINT}/${id}`);
+
+  return (dispatch) => {
+    request.then(({data}) => {
+      dispatch({
+        type: types.DELETE_HOUSEHOLD,
+        payload: id
+      });
+      // Redirect to index after delete success
+      browserHistory.push(successRedirect);
     });
   }
 }

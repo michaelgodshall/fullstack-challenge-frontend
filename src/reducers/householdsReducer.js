@@ -20,6 +20,13 @@ export default function(state = INITIAL_STATE, action) {
         all: { ...state.all, [household.id]: household },
         showId: household.id
       };
+    case types.DELETE_HOUSEHOLD:
+      // action.payload === id of household to delete
+      console.log(state.all);
+      return {
+        ...state,
+        all: _.omit(state.all, action.payload)
+      };
     default:
       return state;
   }
