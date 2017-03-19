@@ -4,6 +4,7 @@ import { Link } from 'react-router';
 import _ from 'lodash';
 import { fetchHousehold, deleteHousehold } from '../actions/householdsActions';
 import { fetchPersons } from '../actions/personsActions';
+import HouseholdHeader from '../components/HouseholdHeader';
 
 class HouseholdsShow extends React.Component {
   componentWillMount() {
@@ -44,10 +45,7 @@ class HouseholdsShow extends React.Component {
 
     return (
       <div>
-        <div>
-          <h1>{household.address}</h1>
-          <p className="lead">{household.city}, {household.state} {household.zip} / {household.number_of_bedrooms} bedrooms</p>
-        </div>
+        <HouseholdHeader household={household}/>
 
         <div>
           <div className="btn-toolbar justify-content-between mb-2" role="toolbar">
