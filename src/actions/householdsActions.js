@@ -12,7 +12,7 @@ export function fetchHouseholds() {
     request.then(({data}) => {
       dispatch({
         type: types.FETCH_HOUSEHOLDS,
-        payload: data
+        households: data
       });
     });
   };
@@ -26,7 +26,7 @@ export function fetchHousehold(id) {
     request.then(({data}) => {
       dispatch({
         type: types.FETCH_HOUSEHOLD,
-        payload: data
+        household: data
       });
     });
   }
@@ -40,7 +40,7 @@ export function createHousehold(props, successRedirect = '/') {
     request.then(({data}) => {
       dispatch({
         type: types.CREATE_HOUSEHOLD,
-        payload: data
+        household: data
       });
       // Redirect after create success
       browserHistory.push(successRedirect);
@@ -56,7 +56,7 @@ export function deleteHousehold(id, successRedirect = '/') {
     request.then(({data}) => {
       dispatch({
         type: types.DELETE_HOUSEHOLD,
-        payload: id
+        householdId: id
       });
       // Redirect after after delete success
       browserHistory.push(successRedirect);

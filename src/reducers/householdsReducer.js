@@ -7,25 +7,30 @@ export default function(state = INITIAL_STATE, action) {
   switch(action.type) {
     case types.FETCH_HOUSEHOLDS:
       // Object-based storage with household id as key
-      const newHouseholds = _.mapKeys(action.payload, 'id');
+      const newHouseholds = _.mapKeys(action.households, 'id');
       return {
         ...state,
         all: { ...state.all, ...newHouseholds}
       };
     case types.FETCH_HOUSEHOLD:
       // Add household to list or replace an existing one
-      const household = action.payload;
       return {
         ...state,
-        all: { ...state.all, [household.id]: household },
-        showId: household.id
+        all: { ...state.all, [action.household.id]: action.household },
+        showId: action.household.id
+      };
+    case types.CREATE_HOUSEHOLD:
+      // Add a new household to the list
+      console.log(action);
+      return {
+        ...state,
+        all: { ...state.all, [action.household.id]: action.household }
       };
     case types.DELETE_HOUSEHOLD:
       // action.payload === id of household to delete
-      console.log(state.all);
       return {
         ...state,
-        all: _.omit(state.all, action.payload)
+        all: _.omit(state.all, action.householdId)
       };
     default:
       return state;
