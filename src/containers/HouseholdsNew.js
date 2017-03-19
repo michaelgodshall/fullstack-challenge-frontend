@@ -48,20 +48,16 @@ class HouseholdsNew extends React.Component {
     // Generate field elements
     const fieldElements = _.map(FIELDS, (field, fieldName) => {
       return (
-        <Field key={fieldName}
-               name={fieldName}
-               label={field.label}
-               component={FormField}
-               type={field.type}
-               element={field.element} />
+        <Field key={fieldName} name={fieldName} label={field.label}
+               component={FormField} type={field.type} element={field.element} />
       );
     });
 
     return (
       <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
-        <h3>New Household</h3>
+        <h1>New Household</h1>
         {fieldElements}
-        <button type="submit" className="btn btn-primary">Save</button>
+        <button type="submit" className="btn btn-primary" role="button">Save</button>
         <Link to="/" className="btn btn-danger">Cancel</Link>
       </form>
     );

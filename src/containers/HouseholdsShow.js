@@ -19,10 +19,16 @@ class HouseholdsShow extends React.Component {
   }
 
   renderPersons() {
-    return this.props.persons.map((person) => {
+    const { persons } = this.props;
+
+    if (!persons.length) {
+      return <div>None</div>
+    }
+
+    return persons.map((person) => {
       return (
         <li className="list-group-item" key={person.id}>
-          <strong>{person.first_name} {person.last_name}</strong>
+          {person.first_name} {person.last_name}
         </li>
       );
     });
@@ -38,23 +44,22 @@ class HouseholdsShow extends React.Component {
 
     return (
       <div>
-        <Link to="/">Back to households</Link>
         <div>
-          <div className="btn-toolbar pull-right">
-            <button className="btn btn-danger"
-                    onClick={this.onDeleteClick.bind(this)}>
-              Delete Household
-            </button>
-          </div>
-          <h3>{household.address}</h3>
-          <p>{household.city}, {household.state} {household.zip}</p>
-          <p>Bedrooms: {household.number_of_bedrooms}</p>
+          <h1>{household.address}</h1>
+          <p className="lead">{household.city}, {household.state} {household.zip} / {household.number_of_bedrooms} bedrooms</p>
         </div>
+
         <div>
-          <h4>People</h4>
+          <h3>People</h3>
           <ul className="list-group">
             {this.renderPersons()}
           </ul>
+        </div>
+
+        <div className="mt-4">
+          <button className="btn btn-danger" role="button" onClick={this.onDeleteClick.bind(this)}>
+            Delete Household
+          </button>
         </div>
       </div>
     );

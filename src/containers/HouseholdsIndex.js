@@ -13,9 +13,9 @@ class HouseholdsIndex extends React.Component {
   renderHouseholds() {
     return this.props.households.map((household) => {
       return (
-        <li className="list-group-item" key={household.id}>
+        <li className="list-group-item list-group-item-action" key={household.id}>
           <Link to={`households/${household.id}`}>
-            <strong>{household.address}</strong>
+            {household.address}
           </Link>
         </li>
       );
@@ -26,12 +26,7 @@ class HouseholdsIndex extends React.Component {
     return (
       <div>
         <div>
-          <div className="btn-toolbar pull-right">
-            <Link to="/households/new" className="btn btn-primary">
-              Add household
-            </Link>
-          </div>
-          <h3>Households</h3>
+          <h1>Households</h1>
         </div>
         <ul className="list-group">
           {this.renderHouseholds()}
