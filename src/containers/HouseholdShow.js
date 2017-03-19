@@ -2,8 +2,8 @@ import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import _ from 'lodash';
-import { fetchHousehold, deleteHousehold } from '../actions/householdsActions';
-import { fetchPersons } from '../actions/personsActions';
+import { fetchHousehold, deleteHousehold } from '../actions/householdActions';
+import { fetchPersons } from '../actions/personActions';
 import HouseholdHeader from '../components/HouseholdHeader';
 
 class HouseholdsShow extends React.Component {

@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import _ from 'lodash';
-import { fetchHouseholds } from '../actions/householdsActions';
+import { fetchHouseholds } from '../actions/householdActions';
 
 class HouseholdsIndex extends React.Component {
   componentWillMount() {

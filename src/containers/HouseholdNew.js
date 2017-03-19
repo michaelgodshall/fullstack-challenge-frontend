@@ -4,9 +4,9 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import { reduxForm, Field } from 'redux-form';
 import _ from 'lodash';
-import { createHousehold } from '../actions/householdsActions';
+import { createHousehold } from '../actions/householdActions';
 import FormField from '../components/FormField';
-import FIELDS from '../constants/householdsFields';
+import FIELDS from '../constants/householdFields';
 
 class HouseholdsNew extends React.Component {
   onSubmit(props) {
