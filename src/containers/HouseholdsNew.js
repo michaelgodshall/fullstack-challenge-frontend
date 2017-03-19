@@ -38,17 +38,7 @@ const FIELDS = {
 class HouseholdsNew extends React.Component {
   onSubmit(props) {
     // Create the household
-    Promise.resolve(
-      this.props.createHousehold(props)
-    ).then(() => {
-      // Push a new path to the router to change routes
-      this.context.router.push('/');
-    });
-
-    // TODO Why doesn't this promise work?
-    // this.props.createHousehold(props).then(() => {
-    //   this.context.router.push('/');
-    // });
+    this.props.createHousehold(props)
   }
 
   render() {
@@ -77,11 +67,6 @@ class HouseholdsNew extends React.Component {
     );
   }
 }
-
-// Find React Router from parent components
-HouseholdsNew.contextTypes = {
-  router: PropTypes.object.isRequired
-};
 
 // Validate each form field
 function validate(values) {

@@ -33,7 +33,7 @@ export function fetchHousehold(id) {
 }
 
 // Create a new household
-export function createHousehold(props) {
+export function createHousehold(props, successRedirect = '/') {
   const request = axios.post(`${HOUSEHOLD_ENDPOINT}`, props);
 
   return (dispatch) => {
@@ -42,6 +42,8 @@ export function createHousehold(props) {
         type: types.CREATE_HOUSEHOLD,
         payload: data
       });
+      // Redirect after create success
+      browserHistory.push(successRedirect);
     });
   }
 }
@@ -56,7 +58,7 @@ export function deleteHousehold(id, successRedirect = '/') {
         type: types.DELETE_HOUSEHOLD,
         payload: id
       });
-      // Redirect to index after delete success
+      // Redirect after after delete success
       browserHistory.push(successRedirect);
     });
   }
