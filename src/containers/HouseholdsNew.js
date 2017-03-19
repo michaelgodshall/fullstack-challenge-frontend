@@ -6,7 +6,7 @@ import { reduxForm, Field } from 'redux-form';
 import _ from 'lodash';
 import { createHousehold } from '../actions/householdsActions';
 import FormField from '../components/FormField';
-import FIELDS from '../constants/householdFields';
+import FIELDS from '../constants/householdsFields';
 
 class HouseholdsNew extends React.Component {
   onSubmit(props) {
