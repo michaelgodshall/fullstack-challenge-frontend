@@ -25,7 +25,12 @@ class HouseholdsIndex extends React.Component {
   render() {
     return (
       <div>
-        <h1>Households</h1>
+        <div className="btn-toolbar pull-right">
+          <Link to="/households/new" className="btn btn-primary">
+            Add household
+          </Link>
+        </div>
+        <h3>Households</h3>
         <ul className="list-group">
           {this.renderHouseholds()}
         </ul>

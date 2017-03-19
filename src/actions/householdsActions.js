@@ -30,3 +30,17 @@ export function fetchHousehold(id) {
     });
   }
 }
+
+// Create a new household
+export function createHousehold(props) {
+  const request = axios.post(`${HOUSEHOLD_ENDPOINT}`, props);
+
+  return (dispatch) => {
+    request.then(({data}) => {
+      dispatch({
+        type: types.CREATE_HOUSEHOLD,
+        payload: data
+      });
+    });
+  }
+}
