@@ -35,7 +35,7 @@ class PersonNew extends React.Component {
     });
   }
 
-  onSubmitNewVehicle (props) {
+  onSubmitNewVehicle(props) {
     // TODO Figure out how to reuse onSubmit and just supply custom redirect
     // Create the person for the current household
     const { household } = this.props;

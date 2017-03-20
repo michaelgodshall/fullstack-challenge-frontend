@@ -14,6 +14,11 @@ class HouseholdsNew extends React.Component {
     this.props.createHousehold(props)
   }
 
+  onSubmitNewPerson(props) {
+    // Create the household and redirect to PersonNew
+    this.props.createHousehold(props, '/persons/new')
+  }
+
   render() {
     // Get handleSubmit from renderForm
     const { handleSubmit } = this.props;
@@ -32,7 +37,9 @@ class HouseholdsNew extends React.Component {
         {fieldElements}
         <div className="btn-toolbar justify-content-between" role="toolbar">
           <div>
-            <button type="submit" className="btn btn-primary mr-2" role="button">Save and continue</button>
+            <button type="submit" className="btn btn-primary mr-2" role="button">Save</button>
+            <a href="#" className="btn btn-secondary"
+               onClick={handleSubmit(this.onSubmitNewPerson.bind(this))}>Save and add person</a>
           </div>
           <div>
             <Link to="/" className="btn btn-secondary">Cancel</Link>
