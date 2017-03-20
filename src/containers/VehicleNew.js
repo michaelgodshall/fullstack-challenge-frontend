@@ -43,7 +43,7 @@ class VehicleNew extends React.Component {
 
     // Show loading placeholder
     if (!household || !persons.length) {
-      return <div>Loading...</div>
+      return <div>Loading...</div>;
     }
 
     // Reset person options

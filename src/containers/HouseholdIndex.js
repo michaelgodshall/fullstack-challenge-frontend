@@ -14,7 +14,7 @@ class HouseholdsIndex extends React.Component {
     const { households } = this.props;
 
     if (!households.length) {
-      return <div>No households have been created</div>
+      return <div>No households have been created</div>;
     }
     return this.props.households.map((household) => {
       return (
@@ -43,7 +43,7 @@ class HouseholdsIndex extends React.Component {
 
 function mapStateToProps(state) {
   // Transform households to an array
-  return { households: _.values(state.households.all) }
+  return { households: _.values(state.households.all) };
 }
 
 export default connect(mapStateToProps, { fetchHouseholds })(HouseholdsIndex);

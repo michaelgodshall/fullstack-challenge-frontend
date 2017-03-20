@@ -49,7 +49,7 @@ class PersonNew extends React.Component {
     const { handleSubmit, household } = this.props;
 
     if (!household) {
-      return <div>Loading...</div>
+      return <div>Loading...</div>;
     }
 
     // Generate field elements

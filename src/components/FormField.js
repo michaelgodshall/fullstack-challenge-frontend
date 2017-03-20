@@ -11,7 +11,7 @@ const FormField = (props) => {
     const optionElements = props.options.map((option) => {
       return (
         <option value={option.value} key={option.value}>{option.name}</option>
-      )
+      );
     });
     fieldElement = (
       <select {...props.input} className="form-control">
@@ -32,7 +32,7 @@ const FormField = (props) => {
       {fieldElement}
       {props.meta.touched && props.meta.error && <span className="form-control-feedback">{props.meta.error}</span>}
     </div>
-  )
+  );
 };
 
 export default FormField;

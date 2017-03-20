@@ -6,7 +6,7 @@ import { fetchHousehold, deleteHousehold, resetCurrentHousehold } from '../actio
 import { fetchPersons } from '../actions/personActions';
 import { fetchVehicles } from '../actions/vehicleActions';
 import HouseholdHeader from '../components/HouseholdHeader';
-import { getGenderDisplay } from '../utils/personHelper'
+import { getGenderDisplay } from '../utils/personHelper';
 
 class HouseholdsShow extends React.Component {
   componentWillMount() {
@@ -64,9 +64,9 @@ class HouseholdsShow extends React.Component {
               <p className="card-text">License Plate: {vehicle.license_plate}</p>
             </div>
           </div>
-        )
+        );
       }
-    })
+    });
   }
 
   render() {
@@ -74,7 +74,7 @@ class HouseholdsShow extends React.Component {
 
     // Show loading if data hasn't loaded yet
     if (!household) {
-      return <div>Loading...</div>
+      return <div>Loading...</div>;
     }
 
     return (
@@ -133,7 +133,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(
-  mapStateToProps,
-  { fetchHousehold, deleteHousehold, fetchPersons, fetchVehicles, resetCurrentHousehold })
-(HouseholdsShow);
+export default connect(mapStateToProps, { fetchHousehold, deleteHousehold, fetchPersons, fetchVehicles, resetCurrentHousehold })(HouseholdsShow);

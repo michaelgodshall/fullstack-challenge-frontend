@@ -29,7 +29,7 @@ export function fetchHousehold(id) {
         household: data
       });
     });
-  }
+  };
 }
 
 // Create a new household
@@ -50,7 +50,7 @@ export function createHousehold(props, successUrl) {
       }
       browserHistory.push(redirectUrl);
     });
-  }
+  };
 }
 
 // Delete a household by id
@@ -58,13 +58,13 @@ export function deleteHousehold(id) {
   const request = axios.delete(`${HOUSEHOLDS_ENDPOINT}/${id}`);
 
   return (dispatch) => {
-    return request.then(({data}) => {
+    return request.then(() => {
       dispatch({
         type: types.DELETE_HOUSEHOLD,
         householdId: id
       });
     });
-  }
+  };
 }
 
 export function resetCurrentHousehold() {
