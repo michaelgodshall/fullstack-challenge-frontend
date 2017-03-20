@@ -29,6 +29,15 @@ class VehicleNew extends React.Component {
     });
   }
 
+  onSubmitAddAnother(props) {
+    // Create the vehicle for the current household, but don't redirect
+    const { household, reset } = this.props;
+    this.props.createVehicle(household.id, props).then(() => {
+      // Reset the form
+      reset();
+    });
+  }
+
   render() {
     const { handleSubmit, household, persons } = this.props;
 
@@ -60,8 +69,16 @@ class VehicleNew extends React.Component {
         <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
           <h3>Add Vehicle</h3>
           {fieldElements}
-          <button type="submit" className="btn btn-primary" role="button">Save</button>
-          <Link to={`/households/${household.id}`} className="btn btn-danger">Cancel</Link>
+          <div className="btn-toolbar justify-content-between" role="toolbar">
+            <div>
+              <button type="submit" className="btn btn-primary mr-2" role="button">Save</button>
+              <a href="#" className="btn btn-secondary"
+                 onClick={handleSubmit(this.onSubmitAddAnother.bind(this))}>Save and add another</a>
+            </div>
+            <div>
+              <Link to={`/households/${household.id}`} className="btn btn-danger">Cancel</Link>
+            </div>
+          </div>
         </form>
       </div>
     );
