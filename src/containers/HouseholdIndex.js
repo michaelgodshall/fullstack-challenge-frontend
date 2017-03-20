@@ -11,6 +11,11 @@ class HouseholdsIndex extends React.Component {
   }
 
   renderHouseholds() {
+    const { households } = this.props;
+
+    if (!households.length) {
+      return <div>No households have been created</div>
+    }
     return this.props.households.map((household) => {
       return (
         <li className="list-group-item list-group-item-action" key={household.id}>
@@ -23,12 +28,6 @@ class HouseholdsIndex extends React.Component {
   }
 
   render() {
-    const { households } = this.props;
-
-    if (!households.length) {
-      return <div>Loading...</div>
-    }
-
     return (
       <div>
         <div>
