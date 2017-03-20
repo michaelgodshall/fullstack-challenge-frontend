@@ -20,20 +20,18 @@ export function fetchVehicles(householdId) {
 }
 
 // Create a new vehicle
-export function createVehicle(householdId, props, successRedirect = '/') {
+export function createVehicle(householdId, props) {
   // Set the household for which the vehicle will be created
   let params = {...props, household: householdId};
   const request = axios.post(VEHICLES_ENDPOINT, params);
 
   return (dispatch) => {
-    request.then(({data}) => {
+    return request.then(({data}) => {
       dispatch({
         type: types.CREATE_VEHICLE,
         vehicle: data,
         householdId
       });
-      // Redirect after create success
-      browserHistory.push(successRedirect);
     });
   };
 }

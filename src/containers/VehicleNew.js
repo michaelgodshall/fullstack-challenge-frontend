@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
-import { Link } from 'react-router';
+import { Link, browserHistory } from 'react-router';
 import { reduxForm, Field } from 'redux-form';
 import _ from 'lodash';
 import { fetchHousehold } from '../actions/householdActions';
@@ -23,7 +23,10 @@ class VehicleNew extends React.Component {
   onSubmit(props) {
     // Create the person for the current household
     const { household } = this.props;
-    this.props.createVehicle(household.id, props, `/households/${household.id}`);
+    this.props.createVehicle(household.id, props).then(() => {
+      // Redirect to household show
+      browserHistory.push(`/households/${household.id}`);
+    });
   }
 
   render() {
