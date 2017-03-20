@@ -69,20 +69,8 @@ class HouseholdsShow extends React.Component {
     })
   }
 
-  renderCompleteAction() {
-    const { household } = this.props;
-
-    if (household) {
-      return (
-        <div>
-
-        </div>
-      )
-    }
-  }
-
   render() {
-    const { household, persons, vehicles } = this.props;
+    const { household } = this.props;
 
     // Show loading if data hasn't loaded yet
     if (!household) {
