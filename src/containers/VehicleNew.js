@@ -42,7 +42,7 @@ class VehicleNew extends React.Component {
     const { handleSubmit, household, persons } = this.props;
 
     // Show loading placeholder
-    if (!household && !persons.length) {
+    if (!household || !persons.length) {
       return <div>Loading...</div>
     }
 

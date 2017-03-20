@@ -23,6 +23,12 @@ class HouseholdsIndex extends React.Component {
   }
 
   render() {
+    const { households } = this.props;
+
+    if (!households.length) {
+      return <div>Loading...</div>
+    }
+
     return (
       <div>
         <div>

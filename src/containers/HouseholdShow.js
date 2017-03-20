@@ -71,10 +71,10 @@ class HouseholdsShow extends React.Component {
   }
 
   render() {
-    const { household } = this.props;
+    const { household, persons, vehicles } = this.props;
 
     // Show loading if data hasn't loaded yet
-    if (!household) {
+    if (!household || !persons.length || !vehicles.length) {
       return <div>Loading...</div>
     }
 
