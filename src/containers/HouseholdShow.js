@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router';
+import { Link, browserHistory } from 'react-router';
 import _ from 'lodash';
 import { fetchHousehold, deleteHousehold } from '../actions/householdActions';
 import { fetchPersons } from '../actions/personActions';
@@ -20,7 +20,10 @@ class HouseholdsShow extends React.Component {
 
   onDeleteClick() {
     // Delete the household
-    this.props.deleteHousehold(this.props.params.id)
+    this.props.deleteHousehold(this.props.params.id).then(() => {
+      // Redirect to household index
+      browserHistory.push('/');
+    });
   }
 
   renderPersons() {

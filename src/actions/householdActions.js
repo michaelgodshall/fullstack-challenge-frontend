@@ -1,5 +1,4 @@
 import axios from 'axios';
-import { browserHistory } from 'react-router'
 import * as types from '../constants/actionTypes';
 import { HOUSEHOLDS_ENDPOINT } from '../constants/apiEndpoints';
 
@@ -9,7 +8,7 @@ export function fetchHouseholds() {
 
   return (dispatch) => {
     // thunks allow for pre-processing actions, calling apis, and dispatching multiple actions
-    request.then(({data}) => {
+    return request.then(({data}) => {
       dispatch({
         type: types.FETCH_HOUSEHOLDS,
         households: data
@@ -23,7 +22,7 @@ export function fetchHousehold(id) {
   const request = axios.get(`${HOUSEHOLDS_ENDPOINT}/${id}`);
 
   return (dispatch) => {
-    request.then(({data}) => {
+    return request.then(({data}) => {
       dispatch({
         type: types.FETCH_HOUSEHOLD,
         household: data
@@ -33,33 +32,29 @@ export function fetchHousehold(id) {
 }
 
 // Create a new household
-export function createHousehold(props, successRedirect = '/') {
+export function createHousehold(props) {
   const request = axios.post(HOUSEHOLDS_ENDPOINT, props);
 
   return (dispatch) => {
-    request.then(({data}) => {
-      dispatch({
+    return request.then(({data}) => {
+      return dispatch({
         type: types.CREATE_HOUSEHOLD,
         household: data
       });
-      // Redirect after create success
-      browserHistory.push(successRedirect);
     });
   }
 }
 
 // Delete a household by id
-export function deleteHousehold(id, successRedirect = '/') {
+export function deleteHousehold(id) {
   const request = axios.delete(`${HOUSEHOLDS_ENDPOINT}/${id}`);
 
   return (dispatch) => {
-    request.then(({data}) => {
+    return request.then(({data}) => {
       dispatch({
         type: types.DELETE_HOUSEHOLD,
         householdId: id
       });
-      // Redirect after after delete success
-      browserHistory.push(successRedirect);
     });
   }
 }

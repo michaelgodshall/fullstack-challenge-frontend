@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
-import { Link } from 'react-router';
+import { Link, browserHistory } from 'react-router';
 import { reduxForm, Field } from 'redux-form';
 import _ from 'lodash';
 import { createHousehold } from '../actions/householdActions';
@@ -11,7 +11,11 @@ import FIELDS from '../constants/householdFields';
 class HouseholdsNew extends React.Component {
   onSubmit(props) {
     // Create the household
-    this.props.createHousehold(props)
+    this.props.createHousehold(props).then(() => {
+      // Redirect to household show
+      // TODO How to get created household id to redirect?
+      browserHistory.push('/');
+    });
   }
 
   render() {
