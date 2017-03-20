@@ -63,7 +63,7 @@ class PersonNew extends React.Component {
                  onClick={handleSubmit(this.onSubmitAddAnother.bind(this))}>Save and add another</a>
             </div>
             <div>
-              <Link to={`/households/${household.id}`} className="btn btn-danger">Cancel</Link>
+              <Link to={`/households/${household.id}`} className="btn btn-secondary">Cancel</Link>
             </div>
           </div>
         </form>

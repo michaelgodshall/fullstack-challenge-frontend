@@ -39,7 +39,7 @@ class HouseholdsNew extends React.Component {
             <button type="submit" className="btn btn-primary mr-2" role="button">Save</button>
           </div>
           <div>
-            <Link to="/" className="btn btn-danger">Cancel</Link>
+            <Link to="/" className="btn btn-secondary">Cancel</Link>
           </div>
         </div>
       </form>
