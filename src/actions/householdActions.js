@@ -37,7 +37,7 @@ export function createHousehold(props) {
 
   return (dispatch) => {
     return request.then(({data}) => {
-      return dispatch({
+      dispatch({
         type: types.CREATE_HOUSEHOLD,
         household: data
       });
