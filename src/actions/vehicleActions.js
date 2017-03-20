@@ -1,5 +1,4 @@
 import axios from 'axios';
-import { browserHistory } from 'react-router'
 import * as types from '../constants/actionTypes';
 import { VEHICLES_ENDPOINT } from '../constants/apiEndpoints';
 
