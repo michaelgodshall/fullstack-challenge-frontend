@@ -71,7 +71,7 @@ class VehicleNew extends React.Component {
           {fieldElements}
           <div className="btn-toolbar justify-content-between" role="toolbar">
             <div>
-              <button type="submit" className="btn btn-primary mr-2" role="button">Save and continue</button>
+              <button type="submit" className="btn btn-primary mr-2" role="button">Save</button>
               <a href="#" className="btn btn-secondary"
                  onClick={handleSubmit(this.onSubmitAddAnother.bind(this))}>Save and add another</a>
             </div>
