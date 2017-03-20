@@ -50,6 +50,11 @@ class HouseholdNew extends React.Component {
   }
 }
 
+HouseholdNew.propTypes = {
+  createHousehold: PropTypes.func.isRequired,
+  handleSubmit: PropTypes.func.isRequired
+};
+
 // Validate each form field
 function validate(values) {
   const errors = {};
