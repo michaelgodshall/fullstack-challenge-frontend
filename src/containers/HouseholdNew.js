@@ -8,7 +8,7 @@ import { createHousehold } from '../actions/householdActions';
 import FormField from '../components/FormField';
 import FIELDS from '../constants/householdFields';
 
-class HouseholdsNew extends React.Component {
+class HouseholdNew extends React.Component {
   onSubmit(props) {
     // Create the household
     this.props.createHousehold(props);
@@ -66,4 +66,4 @@ function validate(values) {
 export default compose(
   connect(null, { createHousehold }),
   reduxForm({form: 'HouseholdNewForm', validate})  // Connect the form component to redux
-)(HouseholdsNew);
+)(HouseholdNew);

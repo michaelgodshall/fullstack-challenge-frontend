@@ -4,7 +4,7 @@ import { Link } from 'react-router';
 import _ from 'lodash';
 import { fetchHouseholds } from '../actions/householdActions';
 
-class HouseholdsIndex extends React.Component {
+class HouseholdIndex extends React.Component {
   componentWillMount() {
     // Fetch a list of households
     this.props.fetchHouseholds();
@@ -46,4 +46,4 @@ function mapStateToProps(state) {
   return { households: _.values(state.households.all) };
 }
 
-export default connect(mapStateToProps, { fetchHouseholds })(HouseholdsIndex);
+export default connect(mapStateToProps, { fetchHouseholds })(HouseholdIndex);

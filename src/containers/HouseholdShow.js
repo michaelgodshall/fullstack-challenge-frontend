@@ -8,7 +8,7 @@ import { fetchVehicles } from '../actions/vehicleActions';
 import HouseholdHeader from '../components/HouseholdHeader';
 import { getGenderDisplay } from '../utils/personHelper';
 
-class HouseholdsShow extends React.Component {
+class HouseholdShow extends React.Component {
   componentWillMount() {
     const householdId = this.props.params.id;
     // Fetch a household with the given id
@@ -133,4 +133,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, { fetchHousehold, deleteHousehold, fetchPersons, fetchVehicles, resetCurrentHousehold })(HouseholdsShow);
+export default connect(mapStateToProps, { fetchHousehold, deleteHousehold, fetchPersons, fetchVehicles, resetCurrentHousehold })(HouseholdShow);
