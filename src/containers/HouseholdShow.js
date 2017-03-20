@@ -61,7 +61,6 @@ class HouseholdsShow extends React.Component {
 
     return vehicles.map((vehicle) => {
       // Get the person assigned to this vehicle
-      console.log(persons);
       const person = _.find(persons, {id: vehicle.person});
 
       if (person) {
