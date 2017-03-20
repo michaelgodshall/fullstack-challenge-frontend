@@ -21,17 +21,27 @@ class PersonNew extends React.Component {
     // Create the person for the current household
     const { household } = this.props;
     this.props.createPerson(household.id, props).then(() => {
-      // Redirect to VehicleNew
-      browserHistory.push(`/households/${household.id}/vehicles/new`);
+      // Redirect to HouseholdShow
+      browserHistory.push(`/households/${household.id}`);
     });
   }
 
-  onSubmitAddAnother(props) {
+  onSubmitResetForm(props) {
     // Create the person for the current household, but don't redirect
     const { household, reset } = this.props;
     this.props.createPerson(household.id, props).then(() => {
       // Reset the form
       reset();
+    });
+  }
+
+  onSubmitNewVehicle (props) {
+    // TODO Figure out how to reuse onSubmit and just supply custom redirect
+    // Create the person for the current household
+    const { household } = this.props;
+    this.props.createPerson(household.id, props).then(() => {
+      // Redirect to VehicleNew
+      browserHistory.push(`/households/${household.id}/vehicles/new`);
     });
   }
 
@@ -58,9 +68,11 @@ class PersonNew extends React.Component {
           {fieldElements}
           <div className="btn-toolbar justify-content-between" role="toolbar">
             <div>
-              <button type="submit" className="btn btn-primary mr-2" role="button">Save and continue</button>
+              <button type="submit" className="btn btn-primary mr-2" role="button">Save</button>
+              <a href="#" className="btn btn-secondary mr-2"
+                 onClick={handleSubmit(this.onSubmitResetForm.bind(this))}>Save and add another</a>
               <a href="#" className="btn btn-secondary"
-                 onClick={handleSubmit(this.onSubmitAddAnother.bind(this))}>Save and add another</a>
+                 onClick={handleSubmit(this.onSubmitNewVehicle.bind(this))}>Save and add vehicle</a>
             </div>
             <div>
               <Link to={`/households/${household.id}`} className="btn btn-secondary">Cancel</Link>
