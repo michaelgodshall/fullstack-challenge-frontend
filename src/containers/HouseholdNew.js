@@ -34,8 +34,14 @@ class HouseholdsNew extends React.Component {
       <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
         <h1>New Household</h1>
         {fieldElements}
-        <button type="submit" className="btn btn-primary" role="button">Save</button>
-        <Link to="/" className="btn btn-danger">Cancel</Link>
+        <div className="btn-toolbar justify-content-between" role="toolbar">
+          <div>
+            <button type="submit" className="btn btn-primary mr-2" role="button">Save</button>
+          </div>
+          <div>
+            <Link to="/" className="btn btn-danger">Cancel</Link>
+          </div>
+        </div>
       </form>
     );
   }
