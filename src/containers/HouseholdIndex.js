@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import _ from 'lodash';
@@ -40,6 +40,11 @@ class HouseholdIndex extends React.Component {
     );
   }
 }
+
+HouseholdIndex.propTypes = {
+  fetchHouseholds: PropTypes.func.isRequired,
+  households: PropTypes.array.isRequired
+};
 
 function mapStateToProps(state) {
   // Transform households to an array
