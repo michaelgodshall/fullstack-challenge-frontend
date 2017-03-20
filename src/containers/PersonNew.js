@@ -21,8 +21,8 @@ class PersonNew extends React.Component {
     // Create the person for the current household
     const { household } = this.props;
     this.props.createPerson(household.id, props).then(() => {
-      // Redirect to household show
-      browserHistory.push(`/households/${household.id}`);
+      // Redirect to VehicleNew
+      browserHistory.push(`/households/${household.id}/vehicles/new`);
     });
   }
 
@@ -58,7 +58,7 @@ class PersonNew extends React.Component {
           {fieldElements}
           <div className="btn-toolbar justify-content-between" role="toolbar">
             <div>
-              <button type="submit" className="btn btn-primary mr-2" role="button">Save</button>
+              <button type="submit" className="btn btn-primary mr-2" role="button">Save and continue</button>
               <a href="#" className="btn btn-secondary"
                  onClick={handleSubmit(this.onSubmitAddAnother.bind(this))}>Save and add another</a>
             </div>

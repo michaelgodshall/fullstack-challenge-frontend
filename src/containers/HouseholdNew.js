@@ -11,11 +11,7 @@ import FIELDS from '../constants/householdFields';
 class HouseholdsNew extends React.Component {
   onSubmit(props) {
     // Create the household
-    this.props.createHousehold(props).then(() => {
-      // Redirect to household show
-      // TODO How to get created household id to redirect?
-      browserHistory.push('/');
-    });
+    this.props.createHousehold(props)
   }
 
   render() {
@@ -36,7 +32,7 @@ class HouseholdsNew extends React.Component {
         {fieldElements}
         <div className="btn-toolbar justify-content-between" role="toolbar">
           <div>
-            <button type="submit" className="btn btn-primary mr-2" role="button">Save</button>
+            <button type="submit" className="btn btn-primary mr-2" role="button">Save and continue</button>
           </div>
           <div>
             <Link to="/" className="btn btn-secondary">Cancel</Link>

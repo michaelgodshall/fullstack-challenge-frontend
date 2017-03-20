@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { browserHistory } from 'react-router';
 import * as types from '../constants/actionTypes';
 import { HOUSEHOLDS_ENDPOINT } from '../constants/apiEndpoints';
 
@@ -41,6 +42,8 @@ export function createHousehold(props) {
         type: types.CREATE_HOUSEHOLD,
         household: data
       });
+      // Redirect to PersonNew
+      browserHistory.push(`/households/${data.id}/persons/new`)
     });
   }
 }
