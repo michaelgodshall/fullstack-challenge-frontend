@@ -6,6 +6,7 @@ import { fetchHousehold, deleteHousehold } from '../actions/householdActions';
 import { fetchPersons } from '../actions/personActions';
 import { fetchVehicles } from '../actions/vehicleActions';
 import HouseholdHeader from '../components/HouseholdHeader';
+import { getGenderDisplay } from '../utils/personHelper'
 
 class HouseholdsShow extends React.Component {
   componentWillMount() {
@@ -35,25 +36,36 @@ class HouseholdsShow extends React.Component {
 
     return persons.map((person) => {
       return (
-        <li className="list-group-item" key={person.id}>
-          {person.first_name} {person.last_name}
-        </li>
+        <div className="card" key={person.id}>
+          <div className="card-block">
+            <h5 className="card-title">{person.first_name} {person.last_name}</h5>
+            <h6 className="card-subtitle mb-2 text-muted">{person.email}</h6>
+            <p className="card-text">{person.age} year old {getGenderDisplay(person.gender)}</p>
+          </div>
+        </div>
       );
     });
   }
 
   renderVehicles() {
-    const { vehicles } = this.props;
+    const { vehicles, persons } = this.props;
 
     if (!vehicles.length) {
       return <div>None</div>
     }
 
     return vehicles.map((vehicle) => {
+      // Get the person assigned to this vehicle
+      const person = _.find(persons, {id: vehicle.person});
+
       return (
-        <li className="list-group-item" key={vehicle.id}>
-          {vehicle.year} {vehicle.make} {vehicle.model}
-        </li>
+        <div className="card" key={vehicle.id}>
+          <div className="card-block">
+            <h5 className="card-title">{vehicle.year} {vehicle.make} {vehicle.model}</h5>
+            <h6 className="card-subtitle mb-2 text-muted">{person.first_name} {person.last_name}</h6>
+            <p className="card-text">License Plate: {vehicle.license_plate}</p>
+          </div>
+        </div>
       )
     })
   }
@@ -78,9 +90,9 @@ class HouseholdsShow extends React.Component {
                     className="btn btn-primary">Add Person</Link>
             </div>
           </div>
-          <ul className="list-group">
+          <div className="card-columns">
             {this.renderPersons()}
-          </ul>
+          </div>
         </div>
 
         <div>
@@ -91,9 +103,9 @@ class HouseholdsShow extends React.Component {
                     className="btn btn-primary">Add Vehicle</Link>
             </div>
           </div>
-          <ul className="list-group">
+          <div className="card-columns">
             {this.renderVehicles()}
-          </ul>
+          </div>
         </div>
 
         <div className="mt-4">
