@@ -61,3 +61,7 @@ export function deleteHousehold(id) {
     });
   }
 }
+
+export function resetCurrentHousehold() {
+  return {type: types.RESET_CURRENT_HOUSEHOLD};
+}

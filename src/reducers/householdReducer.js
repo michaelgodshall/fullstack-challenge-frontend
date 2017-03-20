@@ -31,6 +31,8 @@ export default function(state = INITIAL_STATE, action) {
         ...state,
         all: _.omit(state.all, action.householdId)
       };
+    case types.RESET_CURRENT_HOUSEHOLD:
+      return { ...state, currentId: null};
     default:
       return state;
   }

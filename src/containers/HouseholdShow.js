@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { Link, browserHistory } from 'react-router';
 import _ from 'lodash';
-import { fetchHousehold, deleteHousehold } from '../actions/householdActions';
+import { fetchHousehold, deleteHousehold, resetCurrentHousehold } from '../actions/householdActions';
 import { fetchPersons } from '../actions/personActions';
 import { fetchVehicles } from '../actions/vehicleActions';
 import HouseholdHeader from '../components/HouseholdHeader';
@@ -17,6 +17,11 @@ class HouseholdsShow extends React.Component {
     this.props.fetchPersons(householdId);
     // Fetch vehicles for the current household
     this.props.fetchVehicles(householdId);
+  }
+
+  componentWillUnmount() {
+    // Reset the current household to prevent flash of content when loading new household
+    this.props.resetCurrentHousehold();
   }
 
   onDeleteClick() {
@@ -50,23 +55,26 @@ class HouseholdsShow extends React.Component {
   renderVehicles() {
     const { vehicles, persons } = this.props;
 
-    if (!vehicles.length) {
+    if (!vehicles.length || !persons.length) {
       return <div>None</div>
     }
 
     return vehicles.map((vehicle) => {
       // Get the person assigned to this vehicle
+      console.log(persons);
       const person = _.find(persons, {id: vehicle.person});
 
-      return (
-        <div className="card" key={vehicle.id}>
-          <div className="card-block">
-            <h5 className="card-title">{vehicle.year} {vehicle.make} {vehicle.model}</h5>
-            <h6 className="card-subtitle mb-2 text-muted">{person.first_name} {person.last_name}</h6>
-            <p className="card-text">License Plate: {vehicle.license_plate}</p>
+      if (person) {
+        return (
+          <div className="card" key={vehicle.id}>
+            <div className="card-block">
+              <h5 className="card-title">{vehicle.year} {vehicle.make} {vehicle.model}</h5>
+              <h6 className="card-subtitle mb-2 text-muted">{person.first_name} {person.last_name}</h6>
+              <p className="card-text">License Plate: {vehicle.license_plate}</p>
+            </div>
           </div>
-        </div>
-      )
+        )
+      }
     })
   }
 
@@ -130,5 +138,5 @@ function mapStateToProps(state) {
 
 export default connect(
   mapStateToProps,
-  { fetchHousehold, deleteHousehold, fetchPersons, fetchVehicles })
+  { fetchHousehold, deleteHousehold, fetchPersons, fetchVehicles, resetCurrentHousehold })
 (HouseholdsShow);

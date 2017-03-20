@@ -22,6 +22,11 @@ export default function(state = INITIAL_STATE, action) {
         ...state,
         all: { ...state.all, [action.vehicle.id]: action.vehicle }
       };
+    case types.RESET_CURRENT_HOUSEHOLD:
+      return {
+        ...state,
+        filter: { ...state.filter, householdId: null }
+      };
     default:
       return state;
   }
