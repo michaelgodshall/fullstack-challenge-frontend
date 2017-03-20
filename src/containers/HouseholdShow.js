@@ -123,6 +123,18 @@ class HouseholdShow extends React.Component {
   }
 }
 
+HouseholdShow.propTypes = {
+  fetchHousehold: PropTypes.func.isRequired,
+  deleteHousehold: PropTypes.func.isRequired,
+  fetchPersons: PropTypes.func.isRequired,
+  fetchVehicles: PropTypes.func.isRequired,
+  resetCurrentHousehold: PropTypes.func.isRequired,
+  params: PropTypes.object.isRequired,
+  household: PropTypes.object,
+  persons: PropTypes.array,
+  vehicles: PropTypes.array,
+};
+
 function mapStateToProps(state) {
   return {
     household: state.households.all[state.households.currentId],
