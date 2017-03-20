@@ -35,10 +35,6 @@ class HouseholdsShow extends React.Component {
   renderPersons() {
     const { persons } = this.props;
 
-    if (!persons.length) {
-      return <div>None</div>
-    }
-
     return persons.map((person) => {
       return (
         <div className="card" key={person.id}>
@@ -54,10 +50,6 @@ class HouseholdsShow extends React.Component {
 
   renderVehicles() {
     const { vehicles, persons } = this.props;
-
-    if (!vehicles.length || !persons.length) {
-      return <div>None</div>
-    }
 
     return vehicles.map((vehicle) => {
       // Get the person assigned to this vehicle
@@ -77,11 +69,23 @@ class HouseholdsShow extends React.Component {
     })
   }
 
+  renderCompleteAction() {
+    const { household } = this.props;
+
+    if (household) {
+      return (
+        <div>
+
+        </div>
+      )
+    }
+  }
+
   render() {
     const { household, persons, vehicles } = this.props;
 
     // Show loading if data hasn't loaded yet
-    if (!household || !persons.length || !vehicles.length) {
+    if (!household) {
       return <div>Loading...</div>
     }
 
@@ -92,26 +96,32 @@ class HouseholdsShow extends React.Component {
         <div className="mb-5">
           <div className="btn-toolbar justify-content-between mb-2" role="toolbar">
             <h3>People</h3>
-            <div className="button-group" role="group">
-              <Link to={`/households/${household.id}/persons/new`}
-                    className="btn btn-primary">Add Person</Link>
-            </div>
           </div>
           <div className="card-columns">
             {this.renderPersons()}
+            <div className="card text-center">
+              <div className="card-block">
+                <h5 className="card-title">New Person</h5>
+                <Link to={`/households/${household.id}/persons/new`}
+                      className="btn btn-primary">Add</Link>
+              </div>
+            </div>
           </div>
         </div>
 
         <div>
           <div className="btn-toolbar justify-content-between mb-2" role="toolbar">
             <h3>Vehicles</h3>
-            <div className="button-group" role="group">
-              <Link to={`/households/${household.id}/vehicles/new`}
-                    className="btn btn-primary">Add Vehicle</Link>
-            </div>
           </div>
           <div className="card-columns">
             {this.renderVehicles()}
+            <div className="card text-center">
+              <div className="card-block">
+                <h5 className="card-title">New Vehicle</h5>
+                <Link to={`/households/${household.id}/vehicles/new`}
+                      className="btn btn-primary">Add</Link>
+              </div>
+            </div>
           </div>
         </div>
 
