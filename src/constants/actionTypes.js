@@ -10,3 +10,4 @@ export const CREATE_PERSON = 'CREATE_PERSON';
 
 // Vehicle actions
 export const FETCH_VEHICLES = 'FETCH_VEHICLES';
+export const CREATE_VEHICLE = 'CREATE_VEHICLE';

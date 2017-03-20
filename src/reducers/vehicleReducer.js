@@ -16,6 +16,12 @@ export default function(state = INITIAL_STATE, action) {
         all: { ...state.all, ...newVehicles},
         filter: { ...state.filter, householdId: parseInt(action.householdId) }
       };
+    case types.CREATE_VEHICLE:
+      // Add a new vehicle to the list
+      return {
+        ...state,
+        all: { ...state.all, [action.vehicle.id]: action.vehicle }
+      };
     default:
       return state;
   }
